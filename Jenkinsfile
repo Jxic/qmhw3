@@ -10,7 +10,6 @@ pipeline {
     stage('Test') {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-          sh 'mvn clean package'
           sh 'mvn test -Dtest=CalculatorSpec'
         }
       }
@@ -19,7 +18,7 @@ pipeline {
     stage('Analysis') {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-          sh 'mvn site'
+          sh 'mvn package && mvn site'
         }
       }
     }
@@ -28,7 +27,7 @@ pipeline {
       always {
         junit testResults: '**/target/surefire-reports/TEST-*.xml'
 
-        recordIssues enabledForFailure: true, tool: spotBugs(pattern: 'spotbugs.xml')
+        recordIssues enabledForFailure: true, tool: spotBugs()
       }
   }
 }
