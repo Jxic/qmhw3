@@ -7,11 +7,18 @@ pipeline {
       }
     }
 
-    stage('Analysis') {
+    stage('Test') {
       steps {
         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           sh 'mvn clean package'
           sh 'mvn test -Dtest=CalculatorSpec'
+        }
+      }
+    }
+
+    stage('Analysis') {
+      steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
           sh 'mvn site'
         }
       }
