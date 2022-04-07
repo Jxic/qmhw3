@@ -20,14 +20,12 @@ pipeline {
         sh 'mvn clean package && mvn site'
       }
     }
-
-    post {
+  }
+  post {
       always {
         junit testResults: '**/target/surefire-reports/TEST-*.xml'
 
         recordIssues enabledForFailure: true, tool: spotBugs()
       }
-    }
-
   }
 }
