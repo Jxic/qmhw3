@@ -27,7 +27,7 @@ pipeline {
       always {
         junit testResults: '**/target/surefire-reports/TEST-*.xml'
 
-        recordIssues enabledForFailure: true, tool: spotBugs()
+        recordIssues enabledForFailure: true, tool: spotBugs(), qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
       }
   }
 }
