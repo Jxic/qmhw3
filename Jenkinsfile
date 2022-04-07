@@ -19,7 +19,7 @@ pipeline {
       always {
         junit testResults: '**/target/surefire-reports/TEST-*.xml'
 
-        recordIssues enabledForFailure: true, tool: spotBugs()
+        recordIssues enabledForFailure: true, tool: spotBugs(pattern: '**/target/site/spotbugs.xml')
       }
   }
 }
