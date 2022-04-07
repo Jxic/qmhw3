@@ -36,6 +36,14 @@ public class Calculator {
         return value1 / value2;
     }
 
+    public double logbase2(double value) {
+        /**
+         * This method should take onw value (double)
+         * and get the log.
+         */
+        return Math.log(value)/Math.log(2);
+    }
+
     public static double multiply(double value1, double value2) {
         /**
          * This method should take two values (double)
