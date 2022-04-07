@@ -57,7 +57,7 @@
             <version>4.6.0.0</version>
             <configuration>
             <xmlOutput>true</xmlOutput>
-            <!-- Optional directory to put spotbugs xdoc xml report -->
+            <!--Optional directory to put spotbugs xdoc xml report -->
             <xmlOutputDirectory>target/site</xmlOutputDirectory>
             </configuration>
         </plugin>

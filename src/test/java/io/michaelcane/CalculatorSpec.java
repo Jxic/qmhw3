@@ -41,6 +41,17 @@ public class CalculatorSpec {
     }
 
     @Test
+    public void test$base2() {
+        /**
+         * This method should take two values (double)
+         * and subtracts the first from the second.
+         */
+        double expectedValue = 1;
+        double actualValue = calculator.logbase2(2);
+        assertEquals("This should evaluate to 1", expectedValue, actualValue, delta);
+    }
+
+    @Test
     public void test$divide() {
         /**
          * This method should take two values (double)
