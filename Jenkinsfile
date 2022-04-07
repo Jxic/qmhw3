@@ -17,7 +17,7 @@ pipeline {
 
     stage ('Analysis') {
       steps {
-        sh 'mvn site'
+        sh 'mvn clean package && mvn site'
       }
     }
 
@@ -25,7 +25,7 @@ pipeline {
       always {
         junit testResults: '**/target/surefire-reports/TEST-*.xml'
 
-        recordIssues enabledForFailure: true, tool: findbugs(pattern: '**/target/site/cpd.xml')
+        recordIssues enabledForFailure: true, tool: spotBugs()
       }
     }
 
