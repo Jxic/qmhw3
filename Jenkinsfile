@@ -9,7 +9,9 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'mvn test -Dtest=CalculatorSpec'
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+          sh 'mvn test -Dtest=CalculatorSpec'
+        }
       }
     }
 
