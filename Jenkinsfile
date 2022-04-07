@@ -15,5 +15,19 @@ pipeline {
       }
     }
 
+    stage ('Analysis') {
+      steps {
+        sh 'mvn site'
+      }
+    }
+
+    post {
+      always {
+        junit testResults: '**/target/surefire-reports/TEST-*.xml'
+
+        recordIssues enabledForFailure: true, tool: findbugs(pattern: '**/target/site/cpd.xml')
+      }
+    }
+
   }
 }
