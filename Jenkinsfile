@@ -6,5 +6,12 @@ pipeline {
         sh 'mvn compile'
       }
     }
+
+    stage('Test') {
+      steps {
+        sh 'mvn test -Dtest=CalculatorSpec'
+      }
+    }
+
   }
 }
